@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NextFlix Settings</title>
+		<style>
+			.section {
+				border: 1px solid black;
+				border-radius: 5px;
+				width: 500px;
+				padding: 10px 10px;
+				margin: 10px 10px;
+			}
+			h4 {
+				margin-left: 10px;
+				margin-bottom: -5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Settings</h2>
+
+		<!-- Skip Introduction Settings -->
+		<h4>Skip Introduction</h4>
+		<div class="section">
+			<div>
+				<label>
+					  <input type="checkbox" id="skip_intro">
+					  Enable Auto Skip Introduction
+				</label>
+			</div>
+			<div>
+				<label>
+					<input type="number" max="3" id="skip_intro_time">
+					Time before skipping introduction (max 3 seconds)
+				</label>
+			</div>
+		</div>
+
+		<!-- Next Episode Settings -->
+		<h4>Next Episode</h4>
+		<div class="section">
+			<div>
+				<label>
+					  <input type="checkbox" id="next_episode">
+					  Enable Auto Next Episode 
+				</label>
+			</div>
+			<div>
+				<label>
+					<input type="number" max="10" id="next_episode_time">
+					Time before going to next episode (max 10 seconds)
+				</label>
+			</div>
+		</div>
+		<div id="status"></div>
+		<button id="save">Save</button>
+		<script src="options.js"></script>
+	</body>
+</html>
