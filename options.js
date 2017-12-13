@@ -3,10 +3,12 @@ function save_options() {
 	// Get settings
 	var skipIntro = document.getElementById('skip_intro').checked;
 	var nextEpisode = document.getElementById('next_episode').checked;
+	var muteTrailer = document.getElementById('mute_trailer').checked;
 
 	chrome.storage.sync.set({
 		nextFlixSkipIntro: skipIntro,
 		nextFlixNextEpisode: nextEpisode,
+		nextFlixMuteTrailer: muteTrailer,
 	}, function() {
 		// Update status to let user know options were saved.
 		var status = document.getElementById('status');
@@ -24,9 +26,11 @@ function save_options() {
 		chrome.storage.sync.get({
 		nextFlixSkipIntro: true,
 		nextFlixNextEpisode: true,
+		nextFlixMuteTrailer: true,
 	}, function(items) {
 		document.getElementById('skip_intro').checked = items.nextFlixSkipIntro;
 		document.getElementById('next_episode').checked = items.nextFlixNextEpisode;
+		document.getElementById('mute_trailer').checked = items.nextFlixMuteTrailer;
 	});
 }
 document.addEventListener('DOMContentLoaded', restore_options);

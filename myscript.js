@@ -1,10 +1,12 @@
 chrome.storage.sync.get({
 	nextFlixSkipIntro: true,
 	nextFlixNextEpisode: true,
+	nextFlixMuteTrailer: true,
 }, function(items) {
 	// Settings
 	var skipIntro = items.nextFlixSkipIntro;
 	var nextEpisode = items.nextFlixNextEpisode;
+	var muteTrailer = items.nextFlixMuteTrailer;
 
 	var ancestor = $('body');
 
@@ -29,10 +31,14 @@ chrome.storage.sync.get({
 		// Next Episode
 		if($(nextEpisodeClasses.join()).length > 0 && nextEpisode && !clicking) {
 			clicking = true;
-			$(nextEpisodeClasses.join())[0].click()
+			$(nextEpisodeClasses.join())[0].click();
 			setTimeout(function() {
 				clicking = false;
 			}, 500);
+		}
+		
+		if($('.billboard').find('.audio-btn').length > 0 && $('.billboard').find('.icon-button-audio-on').length > 0 && muteTrailer) {
+			$('.billboard').find('.audio-btn')[0].click();
 		}
 	});
 	ob.observe(ancestor[0], {
